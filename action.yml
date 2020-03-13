@@ -1,0 +1,27 @@
+name: 'pyKwalify'
+description: 'Validate YAML syntax and schema using pyKwalify'
+author: 'eliezio'
+
+inputs:
+  files:
+    description: 'Yaml files to validate'
+    required: true
+  schema:
+    description: 'Schema definition file'
+    required: true
+  strict:
+    description: 'Enables strict validation of all keywords for all Rule objects to find unsupported keyword usage'
+    required: false
+    default: "false"
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.files }}
+    - ${{ inputs.schema }}
+    - ${{ inputs.strict }}
+
+branding:
+  color: blue
+  icon: check-square
