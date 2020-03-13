@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "====================================="
 echo "= Linting YAML files with pyKwalify ="
 echo "====================================="
