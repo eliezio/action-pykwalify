@@ -6,6 +6,13 @@ echo "====================================="
 echo "= Linting YAML files with pyKwalify ="
 echo "====================================="
 
+case "$INPUT_SCHEMA" in
+    http://* | https://* )
+        wget -O /tmp/schema.yaml "$INPUT_SCHEMA"
+        INPUT_SCHEMA=/tmp/schema.yaml
+        ;;
+esac
+
 options=(--schema-file "$INPUT_SCHEMA")
 
 if [[ "$INPUT_STRICT" == "true" ]]; then
